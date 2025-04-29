@@ -26,10 +26,12 @@
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    input, select, button {
+    input, button {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     .price {
       font-size: 1.2em;
@@ -58,31 +60,31 @@
 <main>
 
   <h2>Zamówienie</h2>
-  <label>Ilość (g):</label>
-  <input type="number" id="ilosc" min="5" max="200" value="5" />
 
-  <label>Kod rabatowy (opcjonalnie):</label>
-  <input type="text" id="kod" placeholder="np. bezskn" />
+  <form action="https://getform.io/f/akkyqmqa" method="POST" oninput="obliczCene()">
+    <label>Ilość (g):</label>
+    <input type="number" name="ilosc" id="ilosc" min="5" max="200" value="5" required />
 
-  <p class="price">Cena: <span id="cena">0</span> zł</p>
+    <label>Kod rabatowy (opcjonalnie):</label>
+    <input type="text" name="kod_rabatowy" id="kod" placeholder="np. bezskn" />
 
-  <label>Numer paczkomatu:</label>
-  <input type="text" placeholder="np. WAW01A" />
+    <p class="price">Cena: <span id="cena">0</span> zł</p>
 
-  <label>Kod BLIK:</label>
-  <input type="text" placeholder="XXXXXX" />
+    <label>Numer paczkomatu:</label>
+    <input type="text" name="paczkomat" placeholder="np. WAW01A" required />
 
-  <label>Nick Discord do kontaktu:</label>
-  <input type="text" placeholder="np. skunowy#0001" />
+    <label>Nick Discord do kontaktu:</label>
+    <input type="text" name="discord" placeholder="np. skunowy#0001" required />
 
-  <button onclick="obliczCene()">Oblicz ponownie</button>
+    <button type="submit">Wyślij zamówienie</button>
+  </form>
 
   <div class="section-title">Proces zamówienia i wysyłki</div>
   <p>
     1. Składasz zamówienie i dodajesz mnie na Discordzie: 
     <a href="https://discord.gg/TXHvybXu" target="_blank">discord.gg/TXHvybXu</a><br/>
-    2. Potwierdzasz płatność kodem BLIK<br/>
-    3. Paczka nadawana jest z Twoimi danymi – wygląda, jakbyś wysyłał ją sam do siebie<br/>
+    2. Płatność ustalana indywidualnie przez Discord<br/>
+    3. Paczka nadawana z Twoimi danymi – wygląda, jakbyś wysłał ją sam do siebie<br/>
     4. Otrzymujesz numer przesyłki z InPost<br/>
     5. Odbierasz skuna w paczkomacie
   </p>
