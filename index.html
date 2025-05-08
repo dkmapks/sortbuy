@@ -103,9 +103,6 @@
       <option>Mimosa</option>
     </select>
 
-    <label>Kod rabatowy (opcjonalnie):</label>
-    <input type="text" name="kod_rabatowy" id="kod" placeholder="np. bezskn" />
-
     <p class="price">Cena: <span id="cena">0</span> zł</p>
 
     <label>Numer paczkomatu:</label>
@@ -125,8 +122,6 @@
     4. Otrzymujesz numer przesyłki z InPost<br/>
     5. Odbierasz skuna w paczkomacie
   </p>
-
-  <p class="note">Kod rabatowy <strong>bezskn</strong> daje 30% zniżki – ważny 7 dni!</p>
 
   <div class="section-title">Dostępne Skuny</div>
   <table>
@@ -166,8 +161,7 @@
 <script>
   function obliczCene() {
     const ilosc = parseInt(document.getElementById("ilosc").value);
-    const kod = document.getElementById("kod").value.trim().toLowerCase();
-    let cenaZaGram = 38;
+    let cenaZaGram = 40;
 
     if (ilosc >= 11 && ilosc <= 20) cenaZaGram = 35;
     else if (ilosc >= 21 && ilosc <= 40) cenaZaGram = 30;
@@ -176,10 +170,6 @@
     else if (ilosc >= 151) cenaZaGram = 15;
 
     let cena = ilosc * cenaZaGram;
-
-    if (kod === "bezskn") {
-      cena *= 0.7;
-    }
 
     document.getElementById("cena").innerText = cena.toFixed(2);
   }
